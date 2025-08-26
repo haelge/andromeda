@@ -23,5 +23,6 @@ Thumbs.db
 Desktop.ini
 
 # Project related
+.env
 /demo/*
 /dist/*
