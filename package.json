@@ -14,7 +14,7 @@
   },
   "scripts": {
     "postinstall": "npm run init",
-    "init": "mkdirp dist && npm run build && docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t andromeda-dev:latest . && docker compose build",
+    "init": "mkdirp dist && npm run build && docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t andromeda-dev:latest . && cpy .env.example . --rename=.env && docker compose build",
     "copy-media": "cpy --cwd=./src/media/ . '!scss' '!typescript' ../../dist/media/templates/site/andromeda/",
     "copy-template": "cpy --cwd=./src/template/ . ../../dist/templates/andromeda/",
     "copy-language": "cpy --cwd=./src/language/ . ../../dist/language/",
