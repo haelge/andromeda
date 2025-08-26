@@ -1,0 +1,15 @@
+.site-grid {
+  .background {
+    margin: 2rem 0;
+    padding: 1rem 0;
+    &-blue {
+      background-color: #a3b1c5;
+    }
+    &-grey {
+      background-color: #d5d9df;
+    }
+  }
+  .background:last-of-type {
+    margin-bottom: 0;
+  }
+}

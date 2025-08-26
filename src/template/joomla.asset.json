@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "andromeda",
+  "version": "0.1",
+  "description": "Andromeda is a DPSG branded template, based on cassiopeia, the default Joomla 5 site template",
+  "license": "GPL-2.0-or-later",
+  "assets": [
+    {
+      "name": "andromeda",
+      "type": "script",
+      "uri": "andromeda.js"
+    },
+    {
+      "name": "hero",
+      "type": "script",
+      "attributes": {
+        "type": "module"
+      },
+      "uri": "hero.js"
+    },
+    {
+      "name": "slider",
+      "type": "script",
+      "attributes": {
+        "type": "module"
+      },
+      "uri": "slider.js"
+    },
+    {
+      "name": "swiper",
+      "type": "style",
+      "uri": "external/swiper/swiper.css"
+    },
+    {
+      "name": "swiper.effect-fade",
+      "type": "style",
+      "uri": "external/swiper/modules/effect-fade.css"
+    },
+    {
+      "name": "swiper.navigation",
+      "type": "style",
+      "uri": "external/swiper/modules/navigation.css"
+    },
+    {
+      "name": "swiper.pagination",
+      "type": "style",
+      "uri": "external/swiper/modules/pagination.css"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+@import '../../../../../../node_modules/swiper/modules/navigation';
+
+.swiper-button-prev,
+.swiper-button-next {
+  --swiper-navigation-sides-offset: 5%;
+  background-image: url(../../../../images/arrow.svg);
+  -webkit-background-size: 40px 40px;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background-color: transparent;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.4));
+
+  &:after {
+    font-family: unset;
+    font-size: unset;
+    text-transform: unset;
+    letter-spacing: unset;
+    font-variant: unset;
+    line-height: unset;
+  }
+}
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  &:after {
+    content: unset;
+  }
+}
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  transform: rotateY(180deg);
+  &:after {
+    content: unset;
+  }
+}

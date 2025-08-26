@@ -1,0 +1,38 @@
+.carousel {
+  &-title {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 80%;
+    .mod-articles-title {
+      color: $white;
+      text-shadow: $cassiopeia-box-shadow;
+      font-family: $font-family-serif;
+      font-weight: 300;
+      letter-spacing: 0;
+    }
+  }
+  &-introtext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.65);
+    color: $white;
+    width: 50%;
+    text-align: center;
+    padding: 1rem;
+
+    .btn {
+      color: $white;
+      background-color: transparent;
+      border-color: $white;
+    }
+  }
+}

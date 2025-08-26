@@ -1,0 +1,43 @@
+@import './vars';
+@import './fonts';
+
+:root {
+  --cassiopeia-color-primary: #{$standard-color-primary};
+  --cassiopeia-color-link: #{$standard-color-link};
+  --cassiopeia-color-hover: #{$standard-color-hover};
+
+  --cassiopeia-font-family-body: 'PT Sans', sans-serif;
+  --cassiopeia-font-family-headings: 'Suez One', serif;
+  --cassiopeia-font-weight-headings: 400;
+  --cassiopeia-font-weight-normal: 400;
+
+  --link-color: #{$primary};
+  --link-hover-color: #{$standard-color-primary-hover};
+
+  --btn-focus-box-shadow: none;
+}
+
+@supports (display: grid) {
+  @media (max-width: 992px) {
+    .site-grid {
+      grid-gap: 0 1em;
+      grid-template-columns:
+        [full-start]minmax(0, 1fr) [main-start]repeat(4, minmax(0, 19.875rem)) [main-end]minmax(0, 1fr)
+        [full-end];
+      grid-template-areas:
+        '.banner banner banner banner.'
+        '.top-a  top-a  top-a  top-a. '
+        '.top-b  top-b  top-b  top-b. '
+        '.side-l side-l side-l side-l.'
+        '.comp   comp   comp   comp.  '
+        '.side-r side-r side-r side-r.'
+        '.bot-a  bot-a  bot-a  bot-a. '
+        '.bot-b  bot-b  bot-b  bot-b. ';
+      display: grid;
+    }
+  }
+}
+
+a {
+  @include tab-highlight();
+}

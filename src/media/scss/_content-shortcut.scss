@@ -1,0 +1,21 @@
+.content-shortcut {
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem 3rem;
+  position: fixed;
+  top: 0;
+  transition: translate 0.4s ease-in-out;
+  transform: translateY(-100%);
+  pointer-events: none;
+  opacity: 0;
+  color: $white;
+  width: 100%;
+  background-color: $standard-color-primary;
+
+  &:focus-within {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

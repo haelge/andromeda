@@ -1,0 +1,23 @@
+.btn {
+  font-family: 'Suez One';
+  border: 1px solid $standard-color-primary;
+  border-radius: 0;
+  background: $white;
+  color: $standard-color-primary;
+
+  &:hover,
+  &:focus {
+    background: lighten($standard-color-primary, 60%);
+  }
+  &-primary {
+    border: 1px solid $white;
+    background: $standard-color-primary;
+    color: $white;
+    &:hover,
+    &:focus {
+      border: 1px solid $white;
+      background: lighten($standard-color-primary, 40%);
+    }
+  }
+  @include tab-highlight();
+}

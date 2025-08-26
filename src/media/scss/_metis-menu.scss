@@ -1,0 +1,38 @@
+@import './vars';
+
+.metismenu {
+  .mm-toggler {
+    margin-left: 0.5rem;
+    &::after {
+      content: '';
+      border: 0;
+      background-image: url(../images/circle_chevron-bottom.svg);
+      background-size: 30xp 30px;
+      background-repeat: no-repeat;
+      width: 20px;
+      height: 20px;
+      background-color: transparent;
+      margin-inline-start: unset;
+      transition: background-image 1 ease-in-out;
+    }
+    &[aria-expanded='true']::after {
+      background-image: url(../images/circle_chevron-top.svg);
+      transform: unset;
+    }
+    @include tab-highlight();
+  }
+  &.mod-menu {
+    .active > a {
+      color: $standard-color-hover;
+    }
+    .metismenu-item {
+      & > ul {
+        @media (max-width: 991px) {
+          width: 100%;
+          position: unset;
+          margin: 0.5em 0 -0.5em 0;
+        }
+      }
+    }
+  }
+}

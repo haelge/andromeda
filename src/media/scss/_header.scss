@@ -1,0 +1,31 @@
+.header {
+  &.container-header {
+    background-image: unset;
+
+    &_sticky {
+      position: sticky !important;
+      &--menu {
+        top: -$top-menu-height;
+      }
+      &--topbar {
+        top: 0;
+      }
+    }
+
+    .container-topbar {
+      height: $top-menu-height;
+    }
+    .container-nav {
+      padding: 0 1rem;
+    }
+    .container-search {
+      margin-top: unset;
+    }
+
+    @media (min-width: 1356px) {
+      .container-nav {
+        padding: unset;
+      }
+    }
+  }
+}

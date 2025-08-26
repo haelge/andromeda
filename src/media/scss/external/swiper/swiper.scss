@@ -1,0 +1,6 @@
+@import '../../../../../node_modules/swiper/swiper';
+@import '../../vars';
+
+:root {
+  --swiper-theme-color: #{lighten($standard-color-primary, 40%)};
+}

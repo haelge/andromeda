@@ -1,0 +1,43 @@
+services:
+  joomla:
+    image: andromeda-dev:latest
+    container_name: andromeda-dev-app
+    restart: always
+    ports:
+      - 1929:80
+    environment:
+      JOOMLA_DB_HOST: joomladb
+      JOOMLA_DB_USER: root
+      JOOMLA_DB_PASSWORD: '!supersecret!'
+      JOOMLA_DB_NAME: joomladb
+      JOOMLA_SITE_NAME: ${JOOMLA_SITE_NAME}
+      JOOMLA_ADMIN_USER: ${JOOMLA_ADMIN_USER}
+      JOOMLA_ADMIN_USERNAME: ${JOOMLA_ADMIN_USERNAME}
+      JOOMLA_ADMIN_PASSWORD: ${JOOMLA_ADMIN_PASSWORD}
+      JOOMLA_ADMIN_EMAIL: ${JOOMLA_ADMIN_EMAIL}
+    volumes:
+      - ./dist/language/de-DE/tpl_andromeda.ini:/var/www/html/language/de-DE/tpl_andromeda.ini
+      - ./dist/language/en-GB/tpl_andromeda.ini:/var/www/html/language/en-GB/tpl_andromeda.ini
+      - ./dist/media/templates/site/andromeda:/var/www/html/media/templates/site/andromeda
+      - ./dist/templates/andromeda:/var/www/html/templates/andromeda
+      - joomla_app:/var/www/html
+    networks:
+      - joomla_network
+
+  joomladb:
+    image: mysql:8
+    container_name: andromeda-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: '!supersecret!'
+    volumes:
+      - joomla_db8:/var/lib/mysql
+    networks:
+      - joomla_network
+
+volumes:
+  joomla_app:
+  joomla_db8:
+
+networks:
+  joomla_network:

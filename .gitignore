@@ -1,0 +1,27 @@
+# IDE & System Related Files
+.buildpath
+.project
+.settings
+.DS_Store
+.idea
+.vscode
+.docker
+
+# JS/CSS Build
+node_modules/
+package-lock.json
+dist
+release
+
+# OSX
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Project related
+/demo/*
+/dist/*

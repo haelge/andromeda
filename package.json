@@ -1,0 +1,77 @@
+{
+  "name": "andromeda",
+  "version": "0.0.1",
+  "homepage": "https://github.com/haelge/andromeda#readme",
+  "description": "A DPSG themed template for joomla based on cassiopeia ",
+  "author": "Helge Lente",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/haelge/andromeda/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haelge/andromeda.git"
+  },
+  "scripts": {
+    "postinstall": "npm run init",
+    "init": "mkdirp dist && npm run build && docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t andromeda-dev:latest . && docker compose build",
+    "copy-media": "cpy --cwd=./src/media/ . '!scss' '!typescript' ../../dist/media/templates/site/andromeda/",
+    "copy-template": "cpy --cwd=./src/template/ . ../../dist/templates/andromeda/",
+    "copy-language": "cpy --cwd=./src/language/ . ../../dist/language/",
+    "copy": "npm run copy-template & npm run copy-language & npm run copy-media",
+    "build": "npm run copy & npm run sass & npm run transpile",
+    "import-html": "cpy --cwd=./dist/templates/andromeda/html/ . ../../../../src/template/html/ --no-overwrite",
+    "release": "npm run build && mkdirp release && tar --owner=33 --group=33 -czvf ./release/andromeda.tgz  -C ./dist language -C ./media/templates/site/andromeda/ . -C ../../../../templates/andromeda/ . && echo 'Release created at ./release/andromeda.tgz'",
+    "sass": "rimraf dist/media/templates/site/andromeda/css/* && sass src/media/scss/:dist/media/templates/site/andromeda/css/",
+    "transpile": "npm run transpile-rollup",
+    "transpile-babel": "rimraf dist/media/templates/site/andromeda/js/* && babel --extensions .ts ./src/media/typescript --out-dir ./dist/media/templates/site/andromeda/js",
+    "transpile-rollup": "rimraf dist/media/templates/site/andromeda/js/* && rollup --config rollup.config.ts --configPlugin typescript",
+    "transpile-tsx": "rimraf dist/media/templates/site/andromeda/js/* && tsx",
+    "watch": "npm-watch",
+    "start": "docker compose up -d",
+    "stop": "docker compose down",
+    "sync": "browser-sync 'http://localhost:1929' 'dist' -w",
+    "reload": "browser-sync reload --port 3000",
+    "dev": "npm run start && npm run dev-runtime || npm run stop",
+    "dev-runtime": "npm run watch & npm run sync",
+    "shell": "docker exec -it andromeda-dev-app bash",
+    "clean": "docker volume rm andromeda_joomla_app & docker volume rm andromeda_joomla_db & docker rmi andromeda-dev:latest"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "browser-sync": "^3.0.3",
+    "cpy-cli": "^4.2.0",
+    "eslint": "^9.12.0",
+    "globals": "^15.11.0",
+    "mkdirp": "^3.0.1",
+    "npm-watch": "^0.13.0",
+    "prettier": "^3.3.3",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.27.3",
+    "sass": "^1.68.0",
+    "stylelint": "^16.10.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.2.2",
+    "typescript-eslint": "^8.8.1"
+  },
+  "watch": {
+    "sass": {
+      "patterns": ["src/media/scss"],
+      "extensions": "scss"
+    },
+    "transpile": {
+      "patterns": ["src/media/typescript"],
+      "extensions": "ts"
+    },
+    "copy": {
+      "patterns": ["src"],
+      "ignore": ["src/media/scss", "src/media/typescript"],
+      "extensions": "*"
+    }
+  },
+  "dependencies": {
+    "swiper": "^11.1.15"
+  }
+}

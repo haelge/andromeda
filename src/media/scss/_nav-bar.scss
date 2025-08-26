@@ -1,0 +1,54 @@
+@import './vars';
+
+.navbar {
+  justify-content: flex-end;
+  margin-top: unset !important;
+  .logo {
+    max-height: 2.5rem;
+    width: auto;
+  }
+  .navbar-toggler {
+    color: $primary;
+    margin: 0.5em 0;
+    border: none;
+    &:focus {
+      box-shadow: none !important;
+    }
+    @include tab-highlight();
+  }
+  .mod-menu {
+    color: $primary;
+    font-family: $font-family-serif;
+    font-size: 1.75rem;
+
+    .mm-toggler {
+      margin-left: 0.5rem;
+      &::after {
+        content: '';
+        border: 0;
+        background-image: url(../images/circle_chevron-bottom.svg);
+        background-size: 30xp 30px;
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        margin-inline-start: unset;
+        transition: background-image 1 ease-in-out;
+      }
+      &[aria-expanded='true']::after {
+        background-image: url(../images/circle_chevron-top.svg);
+        transform: unset;
+      }
+    }
+  }
+  img {
+    height: 2.5rem;
+    width: auto;
+  }
+  .container-nav > .navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: unset;
+    margin: 0.5em 0 0.5em 1em;
+  }
+}
